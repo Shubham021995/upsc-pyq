@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Pizza Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        header {
+            background: #e74c3c;
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .pizza-item {
+            background: #ffeaa7;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .order-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .order-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <header>Delicious Pizza Store</header>
+    <div class="container">
+        <h2>Order Your Favorite Pizza</h2>
+        <div class="pizza-item">
+            <span>Margherita Pizza - ₹299</span>
+            <button class="order-btn" onclick="orderPizza('Margherita Pizza', 299)">Order Now</button>
+        </div>
+        <div class="pizza-item">
+            <span>Pepperoni Pizza - ₹399</span>
+            <button class="order-btn" onclick="orderPizza('Pepperoni Pizza', 399)">Order Now</button>
+        </div>
+        <div class="pizza-item">
+            <span>Veggie Supreme - ₹349</span>
+            <button class="order-btn" onclick="orderPizza('Veggie Supreme', 349)">Order Now</button>
+        </div>
+    </div>
+
+    <script>
+        async function orderPizza(name, price) {
+            const response = await fetch('/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, price })
+            });
+            const result = await response.json();
+            alert(result.message);
+        }
+    </script>
+</body>
+</html>
+
+
