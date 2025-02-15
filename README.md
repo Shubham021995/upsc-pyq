@@ -1,2 +1,2 @@
-# upsc-pyq
+# UPSC-PYQ WALLAH
 first web site 
